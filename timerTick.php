@@ -2,7 +2,7 @@
 //设置定时器
 //每隔20000ms出发一次
 swoole_timer_tick(2000, function($timmerID){
-    echo "tick-20000ms\n";
+    echo "tick-20000ms，time:".time()."\n";
 });
 
 //30000秒后执行此函数
