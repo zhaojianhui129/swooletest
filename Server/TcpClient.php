@@ -29,7 +29,7 @@ class TcpClient
      */
     public function onConnect(swoole_client $client)
     {
-        $client->send("你好！\n");
+        $client->send("time\n");
     }
     /**
      * 连接服务器失败时会回调此方法
@@ -47,7 +47,7 @@ class TcpClient
      */
     public function onReceive(swoole_client $client, string $data)
     {
-        echo "接收数据:".$data."\n";
+        echo "接收数据:\n".$data."\n";
     }
 
     /**

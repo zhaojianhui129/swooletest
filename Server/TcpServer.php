@@ -12,7 +12,7 @@ class TcpServer
 
     public function __construct()
     {
-        //try{
+        try{
             //创建swoole_server对象
             $this->server = new Swoole\Server('0.0.0.0', 9501);
             //设置
@@ -28,9 +28,9 @@ class TcpServer
             $this->server->on('close', [$this, 'onClose']);
 
             $this->server->start();
-        /*}catch (){
-
-        }*/
+        }catch (Exception $e){
+            echo "错误：".$e->getMessage();
+        }
     }
 
     /**
@@ -52,6 +52,7 @@ class TcpServer
      */
     public function onReceive(swoole_server $server, int $fd, int $fromId, string $data)
     {
+        $data = trim($data);
         switch ($data){
             case 'time':
                 $data = "现在时间时：".date("Y-m-d H:i:s");
