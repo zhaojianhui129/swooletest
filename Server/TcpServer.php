@@ -12,21 +12,25 @@ class TcpServer
 
     public function __construct()
     {
-        //创建swoole_server对象
-        $this->server = new Swoole\Server('0.0.0.0', 9501);
-        //设置
-        $this->server->set([
-            'worker_num' => 8,//工作进程数量
-            //'daemonize' => true,//是否作为守护进程
-        ]);
-        //监听连接进入事件
-        $this->server->on('connect', [$this, 'onConnect']);
-        //监听数据发送事件
-        $this->server->on('receive', [$this, 'onReceive']);
-        //监听连接关闭事件
-        $this->server->on('close', [$this, 'onClose']);
+        //try{
+            //创建swoole_server对象
+            $this->server = new Swoole\Server('0.0.0.0', 9501);
+            //设置
+            $this->server->set([
+                'worker_num' => 8,//工作进程数量
+                //'daemonize' => true,//是否作为守护进程
+            ]);
+            //监听连接进入事件
+            $this->server->on('connect', [$this, 'onConnect']);
+            //监听数据发送事件
+            $this->server->on('receive', [$this, 'onReceive']);
+            //监听连接关闭事件
+            $this->server->on('close', [$this, 'onClose']);
 
-        $this->server->start();
+            $this->server->start();
+        /*}catch (){
+
+        }*/
     }
 
     /**
