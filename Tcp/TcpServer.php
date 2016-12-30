@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TCP Server
+ * TCP Tcp
  */
 class TcpServer
 {
